@@ -8,6 +8,7 @@ var compression = require('compression');
 
 var routes = require('./routes/index');
 var users = require('./routes/users');
+var websockets = require('./routes/websockets');
 
 var app = express();
 
@@ -17,7 +18,7 @@ app.set('view engine', 'pug');
 
 // uncomment after placing your favicon in /public
 
-//app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
+app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(logger('dev'));
 app.use(compression());
 app.use(bodyParser.json());
@@ -27,6 +28,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', routes);
 app.use('/users', users);
+app.use('/ws', websockets);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -58,6 +60,7 @@ app.use(function(err, req, res, next) {
     error: {}
   });
 });
+
 
 
 module.exports = app;

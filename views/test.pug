@@ -1,0 +1,9 @@
+extends layout
+
+block content
+    h1 Stream Webcam
+    video#localVideo
+    #remoteVideos
+
+    script(src='https://simplewebrtc.com/latest-v2.js')
+    script(src='javascripts/test.js')
